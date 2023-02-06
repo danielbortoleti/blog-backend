@@ -3,6 +3,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { BlogModule } from './blog/blog.module';
+import { MulterModule } from '@nestjs/platform-express';
+
 
 @Module({
   imports: [
@@ -10,6 +12,10 @@ import { BlogModule } from './blog/blog.module';
       useNewUrlParser: true,
     }),
     BlogModule,
+    MulterModule.register({
+      dest: './files',
+    }),
+
   ],
   controllers: [AppController],
   providers: [AppService],
